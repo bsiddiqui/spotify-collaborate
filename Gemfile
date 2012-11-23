@@ -2,13 +2,14 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 gem 'jquery-rails'
-gem 'pg'
 gem 'haml'
 gem 'thin'
-gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth'
 
 group :development, :test do
   gem 'haml-rails'
+  gem 'sqlite3'
   gem 'capybara'
   gem 'pry'
   gem 'pry-rails'
@@ -25,3 +26,6 @@ group :assets do
   gem 'quiet_assets'
 end
 
+group :production do
+  gem 'pg'
+end
