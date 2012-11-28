@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="en" class="en oldIE"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en" class="en"><!--<![endif]-->
+
+<head>
+  <title>Playedby.me / Welcome!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+  <%= stylesheet_link_tag 'application.css' %>
+  <link href='http://fonts.googleapis.com/css?family=Strait' rel='stylesheet' type='text/css'>
+</head>
+  
+<body class="container" onload="$('body').addClass('loaded')" bgcolor = "black">
+	<div id="SignUp" class="join">
+  
+  	<div class="welcome">
+      <h2>Welcome to Playedby<%= image_tag("music_note.png") %>me!</h2>
+  	</div>
+    <div class="content">
+      <div class="header">
+          
+          <h1>Are you ready to party?</h1>
+         
+      </div>
+
+      <div class="subtext">
+        <h5 class="text">Join us to change your life.</h5>
+      </div>
+      <ul class="button">
+      	<%= link_to(image_tag("fb-connect.png"), "/auth/facebook") %>
+
+      </ul>
+</div>
+</div>
+</body>
+</html>
+
