@@ -10,6 +10,8 @@ Liveplaylist::Application.routes.draw do
   match '/auth/failure', :to => 'sessions#failure'
   get '/logout', :to => 'sessions#destroy'
 
+  get '/createplaylist', :to => 'parties#create'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
