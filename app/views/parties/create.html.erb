@@ -10,20 +10,16 @@
 </head>
   
 <body class="container" onload="$('body').addClass('loaded')" bgcolor = "black">
-	<div id="SignUp" class="join">
+	<div id="party" class="create">
   
-  	<div class="welcome">
-      <h2>Welcome to Playedby<%= image_tag("music_note.png") %>me!</h2>
+  	<div class="new">
+      <h1>Create a Party</h1>
   	</div>
     <div class="content">
-      <div class="header">
-          
-          <h1>Are you ready to party?</h1>
-         
-      </div>
+      <div class="form">
 
       <div class="subtext">
-        <h5 class="text">Join us to change your life.</h5>
+        <h5>Step 1 of 2</h5>
       </div>
       <ul class="button">
       	<%= link_to(image_tag("fb-connect.png"), "/auth/facebook") %>
