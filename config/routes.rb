@@ -11,6 +11,7 @@ Liveplaylist::Application.routes.draw do
   get '/logout', :to => 'sessions#destroy'
 
   get '/createplaylist', :to => 'parties#create'
+  get '/search', :to => 'search#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
