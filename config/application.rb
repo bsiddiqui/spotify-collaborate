@@ -58,5 +58,14 @@ module Liveplaylist
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    def self.setup_spotify!
+        $hallon_session = Hallon::Session.initialize IO.read(Rails.root.join('config', 'keys', 'spotify_appkey.key'))
+        $hallon_username = 'basil.siddiqui@gmail.com'
+        $hallon_session.login!('basil.siddiqui@gmail.com', 'basil1990')
+
+        $player = Hallon::Player.new(Hallon::OpenAL)
+        $player.volume_normalization = true
+    end
   end
 end

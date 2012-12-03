@@ -108,3 +108,5 @@ searchFromParams = ->
 		$('input#search').val(search)
 		# Changing val doesn't seem to trigger the keyup
 		setTimeout("$('input#search').trigger('keyup')", 500)
+
+
