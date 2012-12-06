@@ -2,12 +2,23 @@ class SongsController < ApplicationController
 include Spotify
 
 	def new
-		@party = Party.find(params[:party_id])
+		@party = Party.includes(:songs).where("id = ?", params[:party_id]).first
+  
+    	@song = Song.new(:name => params[:name],
+						:artist => params[:artist],
+						:track_key => params[:track_key],
+						:party_id => params[:party_id])
+    	 #@songs = @party.songs.find_with_reputation(:votes, :all, order: 'votes desc')
+    	 #@songssongs = Song.where("party_id = ?", params[:party_id])
+    	#@songs = @songssongs.find_with_reputation(:votes, :all, order: 'votes desc')
+
+
 		@songs = @party.songs.find_with_reputation(:votes, :all, order: 'votes desc')
-		@song = @party.songs.new(:name => params[:name],
-								 :artist => params[:artist],
-								 :track_key => params[:track_key])
-		@song.party = @party
+		#@song = @party.Song.new(:name => params[:name],
+		#						 :artist => params[:artist],
+		#						 :track_key => params[:track_key])
+
+		@song.party = @party #this was here already
 		@party_tracks = @party.party_tracks
 		if @song.save
 			respond_to do |format|

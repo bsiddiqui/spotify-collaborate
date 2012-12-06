@@ -4,7 +4,10 @@ Playedbyme::Application.routes.draw do
 
   get "static_pages/new"
 
+
   resources :parties
+  match '/parties/:code', :to => 'parties#show'
+  post 'parties/search'
 
   resources :songs do
     member { post :vote }
@@ -12,11 +15,14 @@ Playedbyme::Application.routes.draw do
 
   resources :users
   
+  match '/home/:user', :to => 'static_pages#index'
+
   root :to => 'static_pages#index'
 
   get   '/login', :to => 'sessions#new', :as => :login
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/auth/failure', :to => 'sessions#failure'
+ 
 
   resources :sessions
   
