@@ -1,0 +1,48 @@
+<div class="span6">
+	<div id="spotify-play-button">
+		<h1><%= @party.name %></h1>
+		<iframe src="https://embed.spotify.com/?uri=spotify:trackset:<%="#{@party.name}:#{@party_tracks}"%>" frameborder="0" allowtransparency="true"></iframe>
+	</div>
+</div>
+
+<div class="span6">
+	<div class="well" id="spotify-playlist">
+		<h3> Playlist </h3>
+		
+		<div class="playlist">
+			<table class='table table-striped'>
+				<tbody>
+					<% @songs.each_with_index do |s,i| %>
+					<tr>
+						<td>
+							<%= "#{i+1}" %>
+						</td>
+						<td>
+							<%= s.name %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="span12">
+	<div class="well" id="spotify">
+
+		<h3>Add a Song</h3>
+		<%= form_for [@song], :remote => true do |f| %>
+		<%= f.text_field :name %><br>
+		<%= f.hidden_field :party_id, {:value => @party.id} %>
+		<%= f.submit "Search Songs",  :class => "btn btn-primary" %>
+		<% end %>
+
+		<div class="search">
+		</div>
+
+	</div>
+</div>
+
+
+

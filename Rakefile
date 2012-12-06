@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Liveplaylist::Application.load_tasks
+Playedbyme::Application.load_tasks

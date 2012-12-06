@@ -1,13 +1,60 @@
 <!DOCTYPE html>
-<html>
 <head>
-  <%= stylesheet_link_tag    'application.css', :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <title><%= content_for?(:title) ? yield(:title) : "PlayedBy.Me" %></title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
 </head>
+
 <body>
 
-<%= yield %>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#"> PlayedBy.Me </a>
+        <div class="container nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "Dashboard", static_pages_index_path  %></li>
+            <li><%= link_to "Join a Party", parties_path  %></li>
+            <li><%= link_to "Start a Party",  new_party_path  %></li>
+            <li><%= link_to "About", static_pages_new_path  %></li>
+          </ul>
+          <ul class="nav pull-right">
+            <% if current_user %>
+            <li><%= link_to "Logout",   user_path(current_user), :method => :delete  %></li>
+            <% else %>
+            <li><%= link_to "Login", login_path  %></li>
+            <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
 
-</body>
-</html>
+  <div class="container">
+    <div class="content">
+      <div class="row">
+        <%= content_tag :p, flash[:success], :class => "flash notice" if flash[:success] %>
+        <%= content_tag :p, flash[:notice], :class => "flash notice" if flash[:notice] %>
+        <%= content_tag :p, flash[:alert], :class => "flash alert" if flash[:alert] %>
+        <%= yield %>
+      </div><!--/row-->
+    </div><!--/content-->
+
+    <footer>
+      <p>&copy; PlayedBy.Me</p>
+    </footer>
+
+  </div> <!-- /container -->
+
+    <!-- Javascripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+
+  </body>
+  </html>
+

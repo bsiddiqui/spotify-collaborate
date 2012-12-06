@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module Liveplaylist
+module Playedbyme
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -55,18 +55,8 @@ module Liveplaylist
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.assets.paths += %w( static )
-    
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
-    def self.setup_spotify!
-        $hallon_session = Hallon::Session.initialize IO.read(Rails.root.join('config', 'keys', 'spotify_appkey.key'))
-        $hallon_username = 'basil.siddiqui@gmail.com'
-        $hallon_session.login!('basil.siddiqui@gmail.com', 'basil1990')
-
-        $player = Hallon::Player.new(Hallon::OpenAL)
-        $player.volume_normalization = true
-    end
   end
 end

@@ -1,13 +1,25 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
-  helper_method :current_user
-  before_filter :authenticate_user
+  protect_from_forgery  
+
+  helper_method :current_user, :destroy_session
+  
+  private
 
   def current_user
-  	@current_user ||= User.find_by_id(session[:user_id])
+    begin
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue
+      nil
+    end
   end
 
-  def authenticate_user
-    redirect_to login_path unless current_user
+  def destroy_session
+  	@current_user = nil
+  	session[:user_id] = nil
   end
+
+  def authenticate_user!
+  	redirect_to parties_path, :alert => "You must be signed in to do that." unless current_user
+  end
+
 end

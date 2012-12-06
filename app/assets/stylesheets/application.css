@@ -12,6 +12,70 @@
  *= require_tree .
  */
 
+.main{
+	padding-bottom: 20px;
+}
 
+#negative {
+	color: black;
+}
 
-   
+.row {
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 30px;
+
+}
+
+#spotify-play-button {
+
+	text-align: center;
+
+}
+
+ #spotify {
+ 	height: 330px;
+ 	text-align: center;
+ }
+
+ #spotify p {
+ 	text-align: left;
+ }
+
+ #plain {
+ 	height: 330px;
+ 	text-align: center;
+ }
+
+ #parties-search {
+
+	height: 300px;
+	overflow: auto;
+	padding-down: 10px;
+	opacity: 0.4;
+
+}
+
+#spotify-playlist {
+
+ 	text-align: center;
+ 	height: 330px;
+
+}
+
+.playlist {
+
+	height: 270px;
+	overflow: auto;
+	padding-down: 10px;
+	border-radius: 10px 5px;
+
+}
+
+.search {
+	height: 187px;
+	overflow: auto;
+	padding-down: 10px;
+	border-radius: 10px 5px;
+}
+

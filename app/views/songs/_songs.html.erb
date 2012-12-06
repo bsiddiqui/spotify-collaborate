@@ -1,0 +1,19 @@
+<div class="well">
+	<table class='table table-hover'>
+		<tbody>
+			<% @songs.each_with_index do |song, i| %>
+          		<tr id="<%= i %>">
+          			<td>
+          				<h5><%= link_to "Add" , "#{new_song_url}?name=#{song[0]}&artist=#{song[2]}&track_key=#{song[1]}&party_id=#{@party_id}", :remote => true %></h5>
+          			</td>
+	            	<td>
+	               		<%= "#{song[0]}" %>
+	            	</td>
+	            	<td>
+	            		<%= "#{song[2]}" %>
+	            	</td>
+          		</tr>
+	        <% end %>
+	    </tbody>
+	</table>
+</div>

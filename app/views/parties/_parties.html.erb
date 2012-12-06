@@ -1,0 +1,13 @@
+<div class="search">
+	<table class='table table-striped'>
+    	<tbody>
+          <% @parties.each do |p| %>
+          	<tr>
+	            <td>
+	               	<%= link_to p.name, party_path(p) %>
+	            </td>
+          	</tr>
+          <% end %>
+    	</tbody>
+  	</table>
+</div>
