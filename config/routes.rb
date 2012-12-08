@@ -1,17 +1,22 @@
 Playedbyme::Application.routes.draw do
 
+
+
   get "static_pages/index"
 
   get "static_pages/new"
 
+  #match '/searches/new', :to => 'searches#new'
+  resources :searches
 
   resources :parties
   match '/parties/:code', :to => 'parties#show'
-  post 'parties/search'
+#  post 'parties/search'
+  post 'parties/update'
 
-  resources :songs do
-    member { post :vote }
-  end
+#  put '/songs', :to => 'songs#update'
+  resources :songs 
+
 
   resources :users
   

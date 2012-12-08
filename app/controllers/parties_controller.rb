@@ -22,6 +22,8 @@ class PartiesController < ApplicationController
     @song = Song.new
   end
 
+
+
   def index
   #  @url = parties_url
    # @parties = Party.find_all_by_name(params[:search])
@@ -45,7 +47,7 @@ class PartiesController < ApplicationController
    #   else
     #    redirect_to :action => "show"
   #    end
-  redirect_to "/parties/#{params[:q]}"
+  redirect_to "/parties/search/#{params[:q]}"
 
 
   end

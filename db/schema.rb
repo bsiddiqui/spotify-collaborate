@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206023535) do
+ActiveRecord::Schema.define(:version => 20121208014937) do
 
   create_table "parties", :force => true do |t|
     t.string   "name"
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(:version => 20121206023535) do
   add_index "rs_reputations", ["reputation_name"], :name => "index_rs_reputations_on_reputation_name"
   add_index "rs_reputations", ["target_id", "target_type"], :name => "index_rs_reputations_on_target_id_and_target_type"
 
+  create_table "searches", :force => true do |t|
+    t.string   "code"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "songs", :force => true do |t|
     t.string   "name"
     t.string   "track_key"
@@ -72,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20121206023535) do
     t.datetime "updated_at", :null => false
     t.integer  "party_id"
     t.string   "artist"
+    t.integer  "votes"
   end
 
   create_table "users", :force => true do |t|

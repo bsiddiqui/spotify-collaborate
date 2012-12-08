@@ -5,6 +5,7 @@ class Party < ActiveRecord::Base
 
   has_many :songs
   belongs_to :user
+  belongs_to :searches
 
   before_save :create_code
 
