@@ -11,7 +11,10 @@
  *= require_self
  *= require_tree .
  */
+@import 'font-awesome';
 
+.font{
+}
 .main{
 	padding-bottom: 20px;
 }

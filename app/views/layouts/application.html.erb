@@ -2,9 +2,10 @@
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "PlayedBy.Me" %></title>
   <%= stylesheet_link_tag "application", :media => "all" %>
+  <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
+<body class="font">
 
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
@@ -17,7 +18,7 @@
         <a class="brand" href="#"> PlayedBy.Me </a>
         <div class="container nav-collapse">
           <ul class="nav">
-            <li><%= link_to "Dashboard", static_pages_index_path  %></li>
+            <li><%= link_to "Home", static_pages_index_path  %></li>
             <li><%= link_to "Join a Playlist", new_search_path  %></li>
             <li><%= link_to "Start a Playlist",  new_party_path  %></li>
             <li><%= link_to "About", static_pages_new_path  %></li>
@@ -33,6 +34,9 @@
       </div>
     </div>
   </div>
+  <br>
+  <br>
+  <br>
 
   <div class="container">
     <div class="content">

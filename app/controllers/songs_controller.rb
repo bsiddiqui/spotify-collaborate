@@ -10,7 +10,7 @@ include Spotify
 						:party_id => params[:party_id],
 						:votes => 0)
 
-    	p @song
+    	#p @song
     	 #@songs = @party.songs.find_with_reputation(:votes, :all, order: 'votes desc')
     	 #@songssongs = Song.where("party_id = ?", params[:party_id])
     	#@songs = @songssongs.find_with_reputation(:votes, :all, order: 'votes desc')
