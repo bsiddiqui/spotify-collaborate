@@ -10,7 +10,11 @@ include Spotify
 						:party_id => params[:party_id],
 						:votes => 0)
 
+<<<<<<< HEAD
     	#p @song
+=======
+  
+>>>>>>> 1e77094cd82dc735685afd20b3907151ba775202
     	 #@songs = @party.songs.find_with_reputation(:votes, :all, order: 'votes desc')
     	 #@songssongs = Song.where("party_id = ?", params[:party_id])
     	#@songs = @songssongs.find_with_reputation(:votes, :all, order: 'votes desc')
@@ -50,17 +54,21 @@ include Spotify
   		#end
   	end
 
-  	def update
-        @song = Song.find_by_party_id_and_name(params[:party_id], params[:name])
+    def index
+        @song = Song.find_by_name_and_party_id(params[:song][:name], params[:song][:party_id])
+        p @song
       if params[:commit] == "Upvote"
-          @song.update_attribute(:votes, @songs.votes + 1)
+        #@song.votes.up.by_type(User)
+        @votecount = @song.votes.to_i + 1
+        @song.update_attribute(:votes, @votecount)
           redirect_to(:back)
         end
-        if params[:commit] == "Downvote"
-          @song.update_attribute(:votes, @song.votes - 1)
+      if params[:commit] == "Downvote"
+          @votecount = @song.votes.to_i - 1
+         @song.update_attribute(:votes, @votecount)
           redirect_to(:back)
-        end
       end
+    end
   		#@votecount = @song.votes
   		#	@song.update_attribute(:votes, @votecount + 1)
   		#	redirect_to :action => :show, :id => params[:party_id]

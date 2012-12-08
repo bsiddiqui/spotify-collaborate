@@ -22,6 +22,20 @@
 						</td>
 						<td>
 		  						<%= button_to "Delete", { :controller => "songs", :action => "destroy", :party_id => s.party_id, :name => s.name}, :confirm => "Delete this song?", :method => :delete %>
+
+		  						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
+
+		  							<%= f.hidden_field :name, {:value => s.name} %><br>
+		  							<%= f.hidden_field :party_id, {:value => s.party_id} %><br>
+		 							<%= f.submit "Upvote", :class => "btn" %>
+		 						<% end %><%= s.votes %>
+
+		 						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
+
+		  							<%= f.hidden_field :name, {:value => s.name} %><br>
+		  							<%= f.hidden_field :party_id, {:value => s.party_id} %><br>
+		 							<%= f.submit "Downvote", :class => "btn" %>
+		 						<% end %>
 						</td>
 					</tr>
 					<% end %>
