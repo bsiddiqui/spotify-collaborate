@@ -1,11 +1,11 @@
 <div class="span12">
 	<div class="well" id="spotify">
-		<h1>Name your Party</h1>
+		<h1>Name your Playlist</h1>
 	</br>
 		<%= form_for(@party) do |u|%>
 
 		  <%= u.text_field :name %><br>
-		  <%= u.submit :class => "btn btn-primary" %>
+		  <%= u.submit "Start Playlist", :class => "btn btn-primary" %>
 
 		<% end %>
 	</div>

@@ -1,63 +1,33 @@
 class SearchesController < ApplicationController
-  # GET /searches
-  # GET /searches.json
+  before_filter :authenticate_user!, :except => :index
+
   def index
     @searches = Search.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html 
       format.json { render json: @searches }
     end
   end
 
-  # GET /searches/1
-  # GET /searches/1.json
-   def show
-
-
+  def show
     @search = Search.find(params[:id])
-    #@party = Party.find(params[:id])
     @party = Party.includes(:songs).where("code = ?", @search.code).first
     redirect_to party_path(@party)
-
-    #@songs = @party.songs.find_with_reputation(:votes, :all, order: 'votes desc')
-    #@songs = @party.songs.find_with_reputation(:votes, :all, order: 'votes desc')
-    #@songssongs = Song.where("party_id = ?", params[:id])
-    #@songs = @songssongs.find_with_reputation(:votes, :all, order: 'votes desc')
-
-#    @party_tracks = @party.party_tracks
-
-
-#    @song = Song.new
   end
 
-  # def show
-  #  @search = Search.find(params[:id])
-
-  #  respond_to do |format|
-   #   format.html # show.html.erb
-   #   format.json { render json: @search }
-   # end
- # end
-
-  # GET /searches/new
-  # GET /searches/new.json
   def new
     @search = Search.new
-    
     respond_to do |format|
-      format.html # new.html.erb
+      format.html 
       format.json { render json: @search }
     end
   end
 
-  # GET /searches/1/edit
   def edit
     @search = Search.find(params[:id])
   end
 
-  # POST /searches
-  # POST /searches.json
   def create
     @search = Search.new(params[:search])
 
@@ -72,8 +42,6 @@ class SearchesController < ApplicationController
     end
   end
 
-  # PUT /searches/1
-  # PUT /searches/1.json
   def update
     @search = Search.find(params[:id])
 
@@ -88,8 +56,6 @@ class SearchesController < ApplicationController
     end
   end
 
-  # DELETE /searches/1
-  # DELETE /searches/1.json
   def destroy
     @search = Search.find(params[:id])
     @search.destroy

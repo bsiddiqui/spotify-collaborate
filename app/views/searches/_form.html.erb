@@ -11,11 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :code, "Enter Party Code:" %><br />
-    <%= f.text_field :code %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Find Playlist"%>
-  </div>
+    <%= f.text_field :code , :placeholder => 'Enter a Playlist Code...'%><br>
+    <%= f.submit "Join Playlist", :class => "btn btn-primary"%>
 <% end %>
+</div>
+</div>
