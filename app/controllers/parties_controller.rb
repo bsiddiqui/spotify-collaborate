@@ -31,7 +31,7 @@ class PartiesController < ApplicationController
     if party.save
       redirect_to party_path(party)
     else 
-      redirect_to new_party_path, :alert => "You must be signed in to do that"
+      redirect_to new_party_path, :alert => "Error"
     end
   end
 

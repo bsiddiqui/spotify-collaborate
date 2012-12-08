@@ -1,2 +1,15 @@
 <tr><td><%= "#{@songs.length+1}" %></td><td><%= @song.name %></td><td><%= button_to "Delete", { :controller => "songs", :action => "destroy", :party_id => @song.party_id, :id => @song.id, :name => @song.name}, :confirm => "Delete this song?", :method => :delete %>
-</td></tr>
+		  						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
+
+		  							<%= f.hidden_field :name, {:value => @song.name} %><br>
+		  							<%= f.hidden_field :party_id, {:value => @song.party_id} %><br>
+		 							<%= f.submit "Upvote", :class => "btn" %>
+		 						<% end %><%= @song.votes %>
+
+		 						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
+
+		  							<%= f.hidden_field :name, {:value => @song.name} %><br>
+		  							<%= f.hidden_field :party_id, {:value => @song.party_id} %><br>
+		 							<%= f.submit "Downvote", :class => "btn" %>
+		 						<% end %>
+		 					</td></tr>

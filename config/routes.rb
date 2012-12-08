@@ -6,15 +6,13 @@ Playedbyme::Application.routes.draw do
 
   get "static_pages/new"
 
-  #match '/searches/new', :to => 'searches#new'
   resources :searches
 
   resources :parties
   match '/parties/:code', :to => 'parties#show'
-#  post 'parties/search'
   post 'parties/update'
 
-#  put '/songs', :to => 'songs#update'
+  get '/songs', :to => 'songs#show'
   resources :songs 
 
 

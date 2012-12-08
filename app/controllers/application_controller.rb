@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-  	redirect_to parties_path, :alert => "You must be signed in to do that." unless current_user
+  	redirect_to "/login", :alert => "You must be signed in to do that." unless current_user
   end
 
 end
