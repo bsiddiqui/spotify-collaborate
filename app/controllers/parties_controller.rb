@@ -10,9 +10,9 @@ class PartiesController < ApplicationController
   def edit
   end
 
-  def show
+ def show
     @party = Party.includes(:songs).where("code = ?", params[:id]).first
-    @songs = @party.songs.find_with_reputation(:votes, :all, order: 'votes desc')
+    @songs = (@party.songs).sort! { |a,b| b[:votes] <=> a[:votes]}
     @party_tracks = @party.party_tracks
     @song = Song.new
   end
