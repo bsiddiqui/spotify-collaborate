@@ -1,13 +1,2 @@
-<div class="search">
-	<table class='table table-striped'>
-    	<tbody>
-          <% @parties.each do |p| %>
-          	<tr>
-	            <td>
-	               	<%= link_to p.name, party_path(p) %>
-	            </td>
-          	</tr>
-          <% end %>
-    	</tbody>
-  	</table>
-</div>
+<tr><td><%= "#{@songs.length+1}" %></td><td><%= @song.name %></td><td><%= button_to "Delete", { :controller => "songs", :action => "destroy", :party_id => @song.party_id, :id => @song.id, :name => @song.name}, :confirm => "Delete this song?", :method => :delete %>
+</td></tr>
