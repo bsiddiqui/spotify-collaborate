@@ -1,7 +1,7 @@
 <div class="span6">
-	<div id="spotify-play-button">
-		<h1><%= @party.name %></h1>
-		<iframe src="https://embed.spotify.com/?uri=spotify:trackset:<%="#{@party.name}:#{@party_tracks}"%>" frameborder="0" allowtransparency="true"></iframe>
+	<div id="spotify-play-button" style="background-color:#000000;">
+		<h1 style="color:#00FFFF;"><%= @party.name %></h1>
+		<iframe src="https://embed.spotify.com/?uri=spotify:trackset:<%="#{@party.name}:#{@party_tracks}"%>" width="300" height="400" frameborder="0" allowtransparency="true"></iframe>
 	</div>
 </div>
 
@@ -17,43 +17,42 @@
 
 						<td class = "td">
 							<div class = "delete">
-		  						 <%= button_to "X", { :controller => "songs", :action => "destroy", :party_id => s.party_id, :name => s.name}, :confirm => "Delete this song?", :method => :delete, :class => "btn" %>
-		  						</div> 
-		  				</td>
-		  				<td class = "td">
-							<%= "#{i+1}" %>.
+								<%= button_to "X", { :controller => "songs", :action => "destroy", :party_id => s.party_id, :name => s.name}, :confirm => "Delete this song?", :method => :delete, :class => "btn btn-inverse" %>
+							</div> 
 						</td>
-						<td class = "td">
+						<td>
+							<%= "#{i+1}" %>.
+
 							<%= s.name %>		
 						</td>
 
 						<td>
 							<div class = "button2">	
-		 						<span style = "float:right;">	
-		 						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
+								<span style = "float:right;">	
+									<%= form_for [@song], :html => {:method => 'get'} do |f|%>
 
-		  							<%= f.hidden_field :name, {:value => s.name} %>
-		  							<%= f.hidden_field :party_id, {:value => s.party_id} %>
-		 							<%= f.submit "Down", :class => "btn" %>
-		 						<% end %>
-		 					</span>
-							<div class = "buttons_holder">
-								<div class = "button1">
-									<span style = "float:right;">
-		  						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
-		  							<%= f.hidden_field :name, {:value => s.name} %>
-		  							<%= f.hidden_field :party_id, {:value => s.party_id} %>
-		 							<%= f.submit "Up", :class => "btn" %>
-		 						<% end %>		
-		 						</span>	
-		 						</div>
+									<%= f.hidden_field :name, {:value => s.name} %>
+									<%= f.hidden_field :party_id, {:value => s.party_id} %>
+									<%= f.submit "Down", :class => "btn btn-danger" %>
+									<% end %>
+								</span>
+								<div class = "buttons_holder">
+									<div class = "button1">
+										<span style = "float:right;">
+											<%= form_for [@song], :html => {:method => 'get'} do |f|%>
+											<%= f.hidden_field :name, {:value => s.name} %>
+											<%= f.hidden_field :party_id, {:value => s.party_id} %>
+											<%= f.submit "Up", :class => "btn btn-success" %>
+											<% end %>		
+										</span>	
+									</div>
 
-		 						<span style = "float:left;">
-							<%= s.votes %>
-						</span>
+									<span style = "float:left;">
+										<%= s.votes %>
+									</span>
 
-		 					</div>
-		 					</div>
+								</div>
+							</div>
 						</td>
 					</tr>
 					<% end %>
@@ -62,9 +61,8 @@
 		</div>
 	</div>
 </div>
-
 <div class="span12">
-	<div class="well" id="spotify">
+	<div class="well" id="spotify" style="background-color:#FFFFFF;">
 
 		<h3>Add a Song</h3>
 		<%= form_for [@song], :remote => true do |f| %>

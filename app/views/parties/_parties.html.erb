@@ -1,15 +1,41 @@
-<tr><td><%= "#{@songs.length+1}" %></td><td><%= @song.name %></td><td><%= button_to "Delete", { :controller => "songs", :action => "destroy", :party_id => @song.party_id, :id => @song.id, :name => @song.name}, :confirm => "Delete this song?", :method => :delete %>
-		  						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
+<tr>
+	<td class = "td">
+		<div class = "delete">
+			<%= button_to "X", { :controller => "songs", :action => "destroy", :party_id => @song.party_id, :id => @song.id, :name => @song.name}, :confirm => "Delete this song?", :method => :delete, :class => "btn btn-inverse" %>
+		</div> 
+	</td>
+	<td>
+		<%= "#{@songs.length+1}" %>.
 
-		  							<%= f.hidden_field :name, {:value => @song.name} %><br>
-		  							<%= f.hidden_field :party_id, {:value => @song.party_id} %><br>
-		 							<%= f.submit "Upvote", :class => "btn" %>
-		 						<% end %><%= @song.votes %>
+		<%= @song.name %>		
+	</td>
 
-		 						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
+	<td>
+		<div class = "button2">	
+			<span style = "float:right;">	
+				<%= form_for [@song], :html => {:method => 'get'} do |f|%>
 
-		  							<%= f.hidden_field :name, {:value => @song.name} %><br>
-		  							<%= f.hidden_field :party_id, {:value => @song.party_id} %><br>
-		 							<%= f.submit "Downvote", :class => "btn" %>
-		 						<% end %>
-		 					</td></tr>
+				<%= f.hidden_field :name, {:value => @song.name} %>
+				<%= f.hidden_field :party_id, {:value => @song.party_id} %>
+				<%= f.submit "Down", :class => "btn btn-danger" %>
+				<% end %>
+			</span>
+			<div class = "buttons_holder">
+				<div class = "button1">
+					<span style = "float:right;">
+						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
+						<%= f.hidden_field :name, {:value => @song.name} %>
+						<%= f.hidden_field :party_id, {:value => @song.party_id} %>
+						<%= f.submit "Up", :class => "btn btn-success" %>
+						<% end %>		
+					</span>	
+				</div>
+
+				<span style = "float:left;">
+					<%= @song.votes %>
+				</span>
+
+			</div>
+		</div>
+	</td>
+</tr>
