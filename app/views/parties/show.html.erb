@@ -1,7 +1,6 @@
-
 <div class="span6">
 	<div id="spotify-play-button">
-		<h1 style ="color:white;"><%= @party.name %></h1>
+		<h1><%= @party.name %></h1>
 		<iframe src="https://embed.spotify.com/?uri=spotify:trackset:<%="#{@party.name}:#{@party_tracks}"%>" frameborder="0" allowtransparency="true"></iframe>
 	</div>
 </div>
@@ -15,28 +14,46 @@
 				<tbody class ="playlist-refresh">
 					<% @songs.each_with_index do |s,i| %>
 					<tr>
-						<td>
-							<%= "#{i+1}" %>
+
+						<td class = "td">
+							<div class = "delete">
+		  						 <%= button_to "X", { :controller => "songs", :action => "destroy", :party_id => s.party_id, :name => s.name}, :confirm => "Delete this song?", :method => :delete, :class => "btn" %>
+		  						</div> 
+		  				</td>
+		  				<td class = "td">
+							<%= "#{i+1}" %>.
 						</td>
-						<td>
-							<%= s.name %>
+						<td class = "td">
+							<%= s.name %>		
 						</td>
+
 						<td>
-		  						<%= button_to "Delete", { :controller => "songs", :action => "destroy", :party_id => s.party_id, :name => s.name}, :confirm => "Delete this song?", :method => :delete %>
-
-		  						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
-
-		  							<%= f.hidden_field :name, {:value => s.name} %><br>
-		  							<%= f.hidden_field :party_id, {:value => s.party_id} %><br>
-		 							<%= f.submit "Upvote", :class => "btn" %>
-		 						<% end %><%= s.votes %>
-
+							<div class = "button2">	
+		 						<span style = "float:right;">	
 		 						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
 
-		  							<%= f.hidden_field :name, {:value => s.name} %><br>
-		  							<%= f.hidden_field :party_id, {:value => s.party_id} %><br>
-		 							<%= f.submit "Downvote", :class => "btn" %>
+		  							<%= f.hidden_field :name, {:value => s.name} %>
+		  							<%= f.hidden_field :party_id, {:value => s.party_id} %>
+		 							<%= f.submit "Down", :class => "btn" %>
 		 						<% end %>
+		 					</span>
+							<div class = "buttons_holder">
+								<div class = "button1">
+									<span style = "float:right;">
+		  						<%= form_for [@song], :html => {:method => 'get'} do |f|%>
+		  							<%= f.hidden_field :name, {:value => s.name} %>
+		  							<%= f.hidden_field :party_id, {:value => s.party_id} %>
+		 							<%= f.submit "Up", :class => "btn" %>
+		 						<% end %>		
+		 						</span>	
+		 						</div>
+
+		 						<span style = "float:left;">
+							<%= s.votes %>
+						</span>
+
+		 					</div>
+		 					</div>
 						</td>
 					</tr>
 					<% end %>
