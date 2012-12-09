@@ -1,6 +1,7 @@
 class SearchesController < ApplicationController
   before_filter :authenticate_user!, :except => :index
 
+  # renders a list of all the searches that have been performed. Users never see this page
   def index
     @searches = Search.all
 
@@ -10,6 +11,8 @@ class SearchesController < ApplicationController
     end
   end
 
+  # called when a user searches for a party (under "join a party") to redirect them to the correct page. 
+  # if the code the user enters in the search box is not in our database, we alert the user with a message
   def show
     @search = Search.find(params[:id])
     @party = Party.includes(:songs).where("code = ?", @search.code).first
@@ -20,6 +23,8 @@ class SearchesController < ApplicationController
     end
   end
 
+
+  # creates a new entry in the Search database before each search is performed
   def new
     @search = Search.new
     respond_to do |format|
@@ -28,10 +33,8 @@ class SearchesController < ApplicationController
     end
   end
 
-  def edit
-    @search = Search.find(params[:id])
-  end
-
+  # stores information for a newly created search query in the Search database and redirects them to the searched Party's 
+  # playlist page if it is successfully stored; otherwise, it alerts the user with an error message
   def create
     @search = Search.new(params[:search])
 
@@ -46,20 +49,7 @@ class SearchesController < ApplicationController
     end
   end
 
-  def update
-    @search = Search.find(params[:id])
-
-    respond_to do |format|
-      if @search.update_attributes(params[:search])
-        format.html { redirect_to @search, notice: 'Search was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @search.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
+  # deletes a search entry in the Search database
   def destroy
     @search = Search.find(params[:id])
     @search.destroy
