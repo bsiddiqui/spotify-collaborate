@@ -16,7 +16,7 @@ class SearchesController < ApplicationController
     if @party != nil
       redirect_to party_path(@party)
     else
-      redirect_to (:back), :alert => "A party with that code does not exist, please try again."
+      redirect_to (:back), :alert => "A Playlist with that code does not exist, please try again."
     end
   end
 

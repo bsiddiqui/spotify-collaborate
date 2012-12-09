@@ -11,7 +11,6 @@
  *= require_self
  *= require_tree .
  */
-@import 'font-awesome';
 
 .bgImage{
 	width: 100%;
@@ -20,7 +19,7 @@
 }
 
 .font{
-
+	font-family: 'Anaheim', sans-serif;
 }
 
 .main{
