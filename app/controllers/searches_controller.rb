@@ -13,7 +13,11 @@ class SearchesController < ApplicationController
   def show
     @search = Search.find(params[:id])
     @party = Party.includes(:songs).where("code = ?", @search.code).first
-    redirect_to party_path(@party)
+    if @party != nil
+      redirect_to party_path(@party)
+    else
+      redirect_to (:back), :alert => "A party with that code does not exist, please try again."
+    end
   end
 
   def new
@@ -33,7 +37,7 @@ class SearchesController < ApplicationController
 
     respond_to do |format|
       if @search.save
-        format.html { redirect_to @search, notice: 'Search was successfully created.' }
+        format.html { redirect_to @search}
         format.json { render json: @search, status: :created, location: @search }
       else
         format.html { render action: "new" }
