@@ -14,7 +14,10 @@
 @import 'font-awesome';
 
 .font{
+	background-image:url('dj.jpg');
+	background-position: center;
 }
+
 .main{
 	padding-bottom: 20px;
 }
