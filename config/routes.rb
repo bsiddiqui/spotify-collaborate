@@ -1,6 +1,7 @@
 Playedbyme::Application.routes.draw do
 
 
+  match "/", :to => "sessions#new"
 
   get "static_pages/index"
 
@@ -18,9 +19,9 @@ Playedbyme::Application.routes.draw do
 
   resources :users
   
-  match '/home/:user', :to => 'static_pages#index'
+  match '/home/:user', :to => 'users#new'
 
-  root :to => 'static_pages#index'
+  root :to => 'sessions#new'
 
   get   '/login', :to => 'sessions#new', :as => :login
   match '/auth/:provider/callback', :to => 'sessions#create'

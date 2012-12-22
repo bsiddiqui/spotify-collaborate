@@ -159,6 +159,7 @@ DEPENDENCIES
   rails (= 3.2.7)
   sass-rails (~> 3.2.3)
   sqlite3
+  therubyracer
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   uuid

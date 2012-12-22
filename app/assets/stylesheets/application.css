@@ -12,6 +12,11 @@
  *= require_tree .
  */
 
+.step2{
+	background-image: url("Step2.png");
+	background-position: bottom;
+}
+
 .bgImage{
 	width: 100%;
    height: 25%;

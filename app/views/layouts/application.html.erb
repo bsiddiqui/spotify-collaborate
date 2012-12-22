@@ -18,7 +18,11 @@
         <a class="brand" href="#"> PlayedBy.Me </a>
         <div class="container nav-collapse">
           <ul class="nav">
-            <li><%= link_to "Home", static_pages_index_path  %></li>
+            <% if current_user %>
+            <li><%= link_to "Home", user_path(current_user) %></li>
+            <% else %>
+            <li><%= link_to "Home", new_user_path %></li>
+            <% end %>
             <li><%= link_to "Join a Playlist", new_search_path  %></li>
             <li><%= link_to "Start a Playlist",  new_party_path  %></li>
             <li><%= link_to "About", static_pages_new_path  %></li>

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	attr_accessible :nickname, :uid
+	attr_accessible :nickname, :uid, :name, :email, :image
   
   validates_uniqueness_of :uid
   

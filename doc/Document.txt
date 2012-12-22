@@ -1,0 +1,18 @@
+PlayedBy.me
+---------------
+
+PlayedBy.me is a Ruby on Rails web-application. In order to compile the project, follow these instructions:
+1) Install Ruby on Rails
+	If you have a Mac:
+	a) Install Xcode (apple app store)
+	b) Open Xcode and navigate to Xcode > preferences > download and download "Command Line Tools"
+	c) Install Ruby Version Manager (https://rvm.io/rvm/install/) and "Install RVM with ruby"
+	d) Install Homebrew (http://mxcl.github.com/homebrew/) 
+	e) Run "gem install rails" in your terminal
+2) Open a terminal up to the directory where you have PlayedBy.Me saved
+3) Run "bundle install" to make sure you have all dependencies
+4) Run "rake db:migrate" to migrate the databases
+5) Run "rails s" to start the server
+6) Navigate to localhost:3000 in your browser
+
+All further instruction on how to use the app are provided under "Home". If you would like to test out the "Create a Party" or "Join a Party" feature, you must first Login with Facebook.

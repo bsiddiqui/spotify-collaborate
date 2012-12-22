@@ -1,2 +1,55 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<div class="well" id="spotify" style="background-color:#000000;border-color:#000000;">
+	<h2 style = "color:#00FFFF"> This is PlayedBy.Me</h2 >
+</br>
+
+<div class="span11", style = "padding-left:12px;">
+	<div id = "user_parties">
+		<h3 style = "color:#00FFFF"> Your Current Playlists </h3>
+		<div>
+			<table class = 'table table-hover' style="background:#ffffff;">
+				<tbody>
+					<tr style = "font-weight: 900">
+						<td style = "padding-left: 70px;"> Playlist Name </td>
+						<td style = "padding-right: 28px;"> Date Created </td>
+						<td style = "padding-right: 8px;"> Playlist Code </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>	
+		
+		<div class="well">
+			<table class='table table-hover'>
+				<tbody class ="list" style ="font-weight:bold;">
+
+					<% @parties.each_with_index do |party, index| %>
+					<tr>
+
+						<td style = "padding-left: 40px;">
+							<%= "#{index+1}" %>
+						</td>
+						<td style ="width:140px; padding-left: 20px">
+							<%= link_to(party.name, '/parties/'+party.code) %>
+
+						</td>
+
+						<td style = "width:250px; padding-left: 80px;">
+							<%= party.created_at %>
+
+						</td>
+						<td>
+							<%= party.code %>
+						</td>
+					</tr>
+					<% end %> 
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+<div class ="bgImage"><%= image_tag("dj.png") %></div>
+

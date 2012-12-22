@@ -3,6 +3,9 @@
 		<h1 style="color:#00FFFF;"><%= @party.name %></h1>
 		<iframe src="https://embed.spotify.com/?uri=spotify:trackset:<%="#{@party.name}:#{@party_tracks}"%>" frameborder="0" allowtransparency="true"></iframe>
 	</div>
+	<div id="spotify-play-button">
+		<h3 style="color:#00FFFF;">Playlist Code:<br><%= @party.code %></h3>
+	</div>
 </div>
 
 <div class="span6">
