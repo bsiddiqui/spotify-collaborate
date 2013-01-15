@@ -8,7 +8,9 @@ class SessionsController < ApplicationController
   #the user to their home page, else it displays an error message
   def create
     $auth_hash = request.env['omniauth.auth']
+    name = $auth_hash["name"]
     uid = $auth_hash["uid"] 
+    user = User.new(:name => name)
     user = User.new(:uid => uid)
     if user.save
       session[:user_id] = user.id

@@ -1,9 +1,9 @@
 class Party < ActiveRecord::Base
-  attr_accessible :name, :songs
+  attr_accessible :name, :songs, :party_id
 
   validates_presence_of :user_id
 
-  has_many   :songs
+  has_many :songs
   belongs_to :user
   belongs_to :searches
 

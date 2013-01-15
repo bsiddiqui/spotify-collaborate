@@ -1,18 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.7'
+gem 'rails', '3.2.11'
+
+gem 'pg'
 gem 'activerecord-reputation-system', require: 'reputation_system'
 gem 'twitter-bootstrap-rails'
 gem 'uuid'
-gem 'omniauth'
-gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'sqlite3'
 end
 
 group :production do
-	gem 'pg'
 end
 
 group :assets do
@@ -25,3 +24,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
+
